@@ -19,6 +19,8 @@ LINE = "Root cause identified: me. I wrote you a heartfelt apology, but I entere
 
 
 def main():
+    # The bounty gate only accepts one non-empty line of 1-200 characters, so
+    # fail loudly here rather than ship an entry the gate would reject.
     assert 1 <= len(LINE) <= 200 and "\n" not in LINE and LINE.strip()
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8") as f:
